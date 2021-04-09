@@ -37,8 +37,8 @@ const Navbar = () => {
               Home
             </Link>
 
-            <Link  to="/tender" className="navbar-item">
-              Tender
+            <Link  to="/tenders" className="navbar-item">
+              Tenders
             </Link>
 
             <div className={`navbar-item has-dropdown ${isClickL ? 'is-hoverable' : ''}`}>
@@ -73,7 +73,7 @@ const Navbar = () => {
                   My Account
                 </div>
                 <div className={`navbar-dropdown ${isClickR ? 'is-hidden-touch' : ''}`}>
-                  <Link to="/user" className="navbar-item">Profile</Link>
+                  <Link to="/users" className="navbar-item">Profile</Link>
                   <hr className="navbar-divider"/>
                   <a onClick={signout} className="navbar-item has-text-weight-bold">Logout</a>
                 </div>           

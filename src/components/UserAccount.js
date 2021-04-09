@@ -1,15 +1,16 @@
+import Profile from "./Profile"
+
 const UserAccount = () => {
     return ( 
         <div className="container">
             <div className="columns">
-                <div className="column is-2 has-background-primary">
+                <div className="column is-2">
                 <aside className="menu">
                             <p className="menu-label">
                                 My Account
                             </p>
                             <ul className="menu-list">
                                 <li><a className="is-active">Profile</a></li>
-                                <li><a>Address</a></li>
                                 <li><a>Change Password</a></li>
                             </ul>
                             <p className="menu-label">
@@ -42,14 +43,8 @@ const UserAccount = () => {
                             </ul>
                         </aside>
                 </div>
-                <div className="column has-background-primary-dark">
-                    <div className="tabs">
-                        <ul>
-                            <li className="is-active"><a>Profile</a></li>
-                            <li className="is-active"><a>Address</a></li>
-                            <li className="is-active"><a>Change Password</a></li>
-                        </ul>
-                    </div>
+                <div className="column" >
+                    <Profile/>
                 </div>
             </div>
         </div>
