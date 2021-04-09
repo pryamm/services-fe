@@ -2,13 +2,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const Tender = () => {
-    const [data, setData] = useState()
+    const [data, sedivata] = useState()
 
     useEffect(() => {
         try{
             axios.get('http://localhost:8080/tender/')
             .then(res=>{
-                setData(res.data)
+                sedivata(res.data)
                 console.log(res.data)
             })  
             .catch(err=>{
@@ -25,28 +25,21 @@ const Tender = () => {
         {data && data.map(value=>(
 
             <div className="h-72 box overflow-hidden" key={value.id}>
-                <p className="h-24 title is-5 overflow-hidden">{value.title}</p>
-         
-                <table class="table-fixed w-full">
-                    <tbody>
-                        <tr>
-                            <td className="w-1/3">Category</td>
-                            <td>: {value.category}</td>
-                        </tr>
-                        <tr>
-                            <td>Method</td>
-                            <td>: {value.method}</td>
-                        </tr>
-                        <tr>
-                            <td>Location</td>
-                            <td>: {value.location}</td>
-                        </tr>
-                        <tr>
-                            <td>Value</td>
-                            <td>: {value.value}</td>
-                        </tr>
-                    </tbody>
-                </table>                
+                <p className="h-20 overflow-hidden font-medium text-lg text-center">{value.title}</p>
+                <div className="grid grid-cols-1 gap-2 mt-2">
+
+                    
+                <div className="w-full font-medium text-white text-center bg-gradient-to-r from-green-400 to-blue-500">{value.category}</div>
+                <div className="font-medium">{value.method}</div>
+                    
+                <div className="flex justify-between">
+                    <div className="font-medium">Value : </div>
+                    <div className="font-medium text-green-400">{value.value}</div>
+                </div>
+                    <div className="font-medium">Location</div>
+                    <div>{value.location}</div>
+                </div>
+            
             </div>
         ))}
         </>
