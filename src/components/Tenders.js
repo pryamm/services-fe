@@ -1,8 +1,10 @@
 import Filter from "./Filter";
+import PAginations from "./Paginations";
 import Tender from "./Tender"
 
 const Tenders = () => {
     return (
+        <>
         <section className="section container">
             <Filter/>
             <div className=" has-background-sucess">
@@ -11,6 +13,10 @@ const Tenders = () => {
                 </div>
             </div>
         </section>
+        <section className="section container">
+            <PAginations/>
+        </section>
+        </>
     );
 }
  

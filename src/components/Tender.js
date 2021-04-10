@@ -24,7 +24,7 @@ const Tender = () => {
         <>
         {data && data.map(value=>(
 
-            <div className="h-72 box overflow-hidden" key={value.id}>
+            <div className="h-72 box border-2 border-green-200" key={value.id}>
                 <p className="h-20 overflow-hidden font-medium text-lg text-center">{value.title}</p>
                 <div className="grid grid-cols-1 gap-2 mt-2">
 

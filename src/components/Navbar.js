@@ -4,8 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 
 const Navbar = () => {
     const [isActive, setIsActive] = useState(false)
-    const [isClickL, setIsClickL] = useState(false)
-    const [isClickR, setIsClickR] = useState(false)
+    const [isClick, setIsClick] = useState(false)
     const history = useHistory()
 
     const signout = (e) => {
@@ -40,39 +39,14 @@ const Navbar = () => {
             <Link  to="/tenders" className="navbar-item">
               Tenders
             </Link>
-
-            <div className={`navbar-item has-dropdown ${isClickL ? 'is-hoverable' : ''}`}>
-              <div onClick={()=>setIsClickL(!isClickL)} className="navbar-link">
-                Category
-              </div>
-
-              <div className={`navbar-dropdown ${isClickL ? 'is-hidden-touch' : ''}`}>
-                <div className="navbar-item">
-                  Konstruksi
-                </div>
-                <div className="navbar-item">
-                  Teknologi Informasi
-                </div>
-                <div className="navbar-item">
-                  Pengadaan
-                </div>
-                <div className="navbar-item">
-                  Jasa Lainnya
-                </div>
-                <hr className="navbar-divider"/>
-                <div className="navbar-item">
-                  Report an issue
-                </div>  
-              </div>
-            </div>
           </div>
 
           <div className="navbar-end">
-            <div className={`navbar-item has-dropdown ${isClickR ? 'is-hoverable' : ''}`}>
-                <div onClick={()=>setIsClickR(!isClickR)} className="navbar-link">
+            <div className={`navbar-item has-dropdown ${isClick ? 'is-hoverable' : ''}`}>
+                <div onClick={()=>setIsClick(!isClick)} className="navbar-link">
                   My Account
                 </div>
-                <div className={`navbar-dropdown ${isClickR ? 'is-hidden-touch' : ''}`}>
+                <div className={`navbar-dropdown ${isClick ? 'is-hidden-touch' : ''}`}>
                   <Link to="/users" className="navbar-item">Profile</Link>
                   <hr className="navbar-divider"/>
                   <a onClick={signout} className="navbar-item has-text-weight-bold">Logout</a>
