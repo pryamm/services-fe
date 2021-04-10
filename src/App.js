@@ -1,5 +1,6 @@
 import { Route, Switch } from "react-router"
 import Error404 from "./components/Error404"
+import Footers from "./components/Footers"
 import Home from "./components/Home"
 import Nav from "./components/Nav"
 import Navbar from "./components/Navbar"
@@ -25,6 +26,7 @@ function App() {
         <Route path="/users/:id" component={User}/>
         <Route path="*" component={Error404}/>
       </Switch>
+      <Footers/>
     </>
   )
 }
