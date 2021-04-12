@@ -1,13 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
-const Signin = () => {
+const Signin = ({userLogin}) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [emailChecker, setEmailChecker] = useState('')
     const [passwordChecker, setPasswordChecker] = useState('')
-
+    const history = useHistory()
    
 
     const handleSubmit = (e) =>{
@@ -17,8 +17,11 @@ const Signin = () => {
             axios.post('http://localhost:9000/user/signin/', {email, password}, {withCredentials: true})
             .then(res=>{
                 console.log(res)
+                localStorage.setItem("user", res.data.user);
+                userLogin()
                 setEmailChecker('')
                 setPasswordChecker('')
+                history.push('/')
             })  
             .catch(err=>{
                 console.log(err.response.data)

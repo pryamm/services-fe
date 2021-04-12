@@ -1,19 +1,26 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({user, userLogout}) => {
     const [isActive, setIsActive] = useState(false)
     const [isClick, setIsClick] = useState(false)
-    const history = useHistory()
+    const [isLogin, setIsLogin] = useState(false)
+
+    useEffect(() => {
+      if(user){
+        setIsLogin(true)
+      }
+    }, [user])
 
     const signout = (e) => {
       e.preventDefault()
-
       axios.post('http://localhost:9000/user/signout/', {}, {withCredentials: true})
-            .then(res=>{
-                console.log(res)
-            })  
+        .then(res=>{
+          setIsLogin(false)
+          userLogout()
+          localStorage.removeItem("user");
+      })  
     }
 
     return ( 
@@ -49,11 +56,11 @@ const Navbar = () => {
                 <div className={`navbar-dropdown ${isClick ? 'is-hidden-touch' : ''}`}>
                   <Link to="/users" className="navbar-item">Profile</Link>
                   <hr className="navbar-divider"/>
-                  <a onClick={signout} className="navbar-item has-text-weight-bold">Logout</a>
+                  <a onClick={signout} className={`navbar-item has-text-weight-bold ${isLogin?'':'is-hidden'}`}>Logout</a>
                 </div>           
             </div>
 
-            <div className="navbar-item">
+            <div className={`navbar-item ${isLogin?'is-hidden':''}`}>
               <div className="buttons">   
                 <Link  to="/signup" className="button is-primary">
                   <strong>Sign up</strong>

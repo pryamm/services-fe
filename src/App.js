@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { Route, Switch } from "react-router"
 import Error404 from "./components/Error404"
 import Footers from "./components/Footers"
@@ -12,14 +13,22 @@ import User from "./components/User"
 import UserAccount from "./components/UserAccount"
 
 function App() {
+  const [user, setUser] = useState()
+  const userLogin = () => {
+    setUser(localStorage.getItem("user"))
+  }
+  const userLogout = () => {
+    setUser(undefined)
+  }
+
   return (
     <>
-      <Navbar/>
+      <Navbar user={user} userLogout={userLogout}/>
       <Nav/>
       <Switch>
         <Route exact path="/" component={Home}/>
         <Route path="/signup" component={Signup}/>
-        <Route path="/signin" component={Signin}/>
+        <Route path="/signin" component={()=>(<Signin userLogin={userLogin}/>)}/>
         <Route exact path="/tenders" component={Tenders}/>
         <Route exact path="/tenders/:id" component={TenderDetail}/>
         <Route exact path="/users" component={UserAccount}/>
