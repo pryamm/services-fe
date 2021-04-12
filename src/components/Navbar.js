@@ -8,6 +8,7 @@ const Navbar = ({user, userLogout}) => {
     const [isLogin, setIsLogin] = useState(false)
 
     useEffect(() => {
+      user = localStorage.getItem("user")
       if(user){
         setIsLogin(true)
       }
@@ -21,7 +22,7 @@ const Navbar = ({user, userLogout}) => {
           userLogout()
           localStorage.removeItem("user");
       })  
-    }
+    } 
 
     return ( 
       <nav className="navbar" role="navigation" aria-label="main navigation">

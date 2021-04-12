@@ -18,9 +18,9 @@ const Signin = ({userLogin}) => {
             .then(res=>{
                 console.log(res)
                 localStorage.setItem("user", res.data.user);
-                userLogin()
                 setEmailChecker('')
                 setPasswordChecker('')
+                userLogin()
                 history.push('/')
             })  
             .catch(err=>{
